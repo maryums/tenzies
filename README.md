@@ -3,10 +3,11 @@
 <li> Click the roll button to generate new dice</li>
 <li>Freeze each die by clicking to "hold" the die at its current value</li>
 
-
+<br>
 <b>Uses</b>
 <li>React</li>
 <li> HTML/CSS/Javascript </li>
 
-<b>View on GitHub Pages</b>
+<br>
+<b>View on GitHub Pages</b><br>
 <a href="https://maryums.github.io/tenzies">https://maryums.github.io/tenzies</a>

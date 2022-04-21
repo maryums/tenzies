@@ -22,15 +22,25 @@ function App() {
   }
 
   const [dice, setDice] = useState(allNewDice())
+  const [tenzies, setTenzies] = useState(false)
+
+  useEffect(() => {
+    const allHeld = dice.every(die => die.isHeld)
+    const firstValue = dice[0].value
+    const allSameValue = dice.every(die => die.value === firstValue)
+    if (allHeld && allSameValue) {
+      setTenzies(true)
+      console.log("You won!")
+    }
+  }, [dice])
 
 
   const handleDiceRoll = () => {
-    if (!isWon) {
+    if (!tenzies) {
       setDice(oldDice => oldDice.map(die => {
         return die.isHeld ? die : generateNewDie()
       }))
     }
-
   }
 
 
@@ -48,6 +58,7 @@ function App() {
 
   const resetHandler = () => {
     setDice(allNewDice)
+    setTenzies(!tenzies)
   }
 
   let isWon;
@@ -58,22 +69,8 @@ function App() {
       value={die.value}
       id={die.id}
       holdDice={holdDice}
-      isWon={isWon}
-
     />
   ))
-
-
-
-  const playGame = () => {
-    if (dice.every(x => x.isHeld == true)) {
-      console.log("check")
-      isWon = true
-    }
-  }
-
-
-  playGame()
 
   return (
 
@@ -88,15 +85,17 @@ function App() {
         {diceElements}
       </div>
 
-      <button
+      {!tenzies ? <button
         onClick={handleDiceRoll}
-        className={isWon ? 'no-roll-dice' : 'roll-dice'}>Roll</button>
-
-      {isWon && <div className="you-win">
-        <h1>You Win!</h1>
+        className={tenzies ? 'no-roll-dice' :
+          'roll-dice'}>Roll</button> :
         <button
           className='reset-button'
           onClick={resetHandler}>Play Again?</button>
+      }
+
+      {tenzies && <div className="you-win">
+        <h1>You Win!</h1>
       </div>}
 
     </main>
