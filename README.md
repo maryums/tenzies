@@ -1,7 +1,5 @@
 <b>Introduction</b>
-<li> Play an fun, interactive game of Tenzies with the objective of getting all ten of your dice to show the same number </li>
-<li> Click the roll button to generate new dice</li>
-<li>Freeze each die by clicking to "hold" the die at its current value</li>
+<li> This React app utilizes functional components and hooks to set up a digital, dynamically rendered version of the popular dice game, Tenzies. Roll the ten "dice" and attempt to match all ten die to the same value. The user "holds" the value of their dice and rolls until they win. Attempts are displayed and added  the Leaderboard, which is saved to LocalStorage </li>
 
 <br>
 <b>Uses</b>
